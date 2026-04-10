@@ -1,8 +1,12 @@
 {
   "name": "vinn-oauth",
   "version": "1.0.0",
+  "scripts": {
+    "build": "next build",
+    "vercel-build": "next build"
+  },
   "dependencies": {
-    "next": "14.2.0",
+    "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"
   }
