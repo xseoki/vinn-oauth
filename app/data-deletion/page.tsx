@@ -1,17 +1,36 @@
 export const metadata = { title: 'Data Deletion — Vinn' }
 
-export default function DataDeletionPage() {
+export default function DataDeletionPage({
+  searchParams,
+}: {
+  searchParams: { code?: string }
+}) {
+  const confirmationCode = searchParams?.code
+
   return (
     <main style={{ maxWidth: 720, margin: '60px auto', padding: '0 24px', fontFamily: 'sans-serif', lineHeight: 1.7, color: '#1a1a1a' }}>
       <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Data Deletion Request</h1>
       <p style={{ color: '#666', marginBottom: 40 }}>Last updated: April 2025</p>
+
+      {confirmationCode && (
+        <div style={{ background: '#f0fdf4', border: '1px solid #86efac', borderRadius: 8, padding: '16px 20px', marginBottom: 32 }}>
+          <p style={{ fontWeight: 600, margin: 0, marginBottom: 4, color: '#15803d' }}>Deletion Request Received</p>
+          <p style={{ margin: 0, fontSize: 14, color: '#166534' }}>
+            Confirmation code: <code style={{ background: '#dcfce7', padding: '2px 8px', borderRadius: 4, fontFamily: 'monospace' }}>{confirmationCode}</code>
+          </p>
+          <p style={{ margin: 0, marginTop: 8, fontSize: 14, color: '#166534' }}>
+            Vinn stores all data locally on your device only. There is no server-side data to delete.
+            To complete deletion, follow the steps below.
+          </p>
+        </div>
+      )}
 
       <section style={{ marginBottom: 36 }}>
         <h2 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>How Vinn Stores Your Data</h2>
         <p>
           Vinn stores all data <strong>locally on your computer only</strong>. There is no central
           server or cloud database. When you connect your Meta (Facebook/Instagram) account,
-          your access token is encrypted and saved on your local device.
+          your access token is encrypted and saved on your local device only.
         </p>
       </section>
 
